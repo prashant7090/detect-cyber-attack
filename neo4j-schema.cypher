@@ -8,8 +8,7 @@ CREATE CONSTRAINT IF NOT EXISTS FOR (a:AttackType) REQUIRE a.name IS UNIQUE;
 CREATE CONSTRAINT IF NOT EXISTS FOR (e:NetworkEvent) REQUIRE e.eventId IS UNIQUE;
 
 
-LOAD CSV WITH HEADERS FROM 'file:///cybersecurity.csv' AS row
-
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/prashant7090/detect-cyber-attack/main/cybersecurity.csv' AS row
 WITH row,
      CASE WHEN row.user_agent = '' THEN NULL ELSE row.user_agent END AS userAgentText,
      CASE WHEN row.url = '' THEN NULL ELSE row.url END AS urlText,
