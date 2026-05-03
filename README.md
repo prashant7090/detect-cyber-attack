@@ -35,7 +35,7 @@ Relationships:
 
 ### Aura / cloud Neo4j
 
-1. Upload `cybersecurity.csv` to a public HTTPS location. - (In this case, we have given github csc file url.)
+1. Upload `cybersecurity.csv` to a public HTTPS location. - (In this case, we have given github csv file url.)
 2. Update `neo4j-schema.cypher` to use:
    ```cypher
    LOAD CSV WITH HEADERS FROM 'https://your-public-url/cybersecurity.csv' AS row
