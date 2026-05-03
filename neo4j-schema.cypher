@@ -55,3 +55,14 @@ FOREACH (_ IN CASE WHEN urlText IS NOT NULL THEN [1] ELSE [] END |
     MERGE (url:URL {value: urlText})
     MERGE (event)-[:ACCESSED_URL]->(url)
 );
+
+
+CREATE VECTOR INDEX ipaddress_embedding_index IF NOT EXISTS
+FOR (n:IPAddress) 
+ON (n.embedding) 
+OPTIONS {indexConfig: {`vector.dimensions`: 1536, `vector.similarity_function`: 'cosine'}};
+
+CREATE VECTOR INDEX networkevent_embedding_index IF NOT EXISTS
+FOR (n:NetworkEvent) 
+ON (n.embedding) 
+OPTIONS {indexConfig: {`vector.dimensions`: 1536, `vector.similarity_function`: 'cosine'}};
